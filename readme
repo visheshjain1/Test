@@ -1,0 +1,28 @@
+
+1.This is a simple Express.js server that provides a datastore API with four commands: SET, GET, QPUSH, and QPOP. It also includes an additional command called BQPOP, which pops an element from a blocking queue with a specified timeout.
+
+2.To use the server, start it by running "node index.js". Then, you can send requests to the server via HTTP POST requests to the "/command" endpoint. The request body should include a "command" property that specifies the datastore operation to perform, along with any necessary parameters.
+
+3.The SET command sets a value in the datastore with the specified key, value, and expiry time. The NX and XX conditions can also be used to control whether the SET command should only set the key if it does not already exist, or should only set the key if it already exists, respectively.
+
+4.The GET command retrieves the value of the specified key from the datastore.
+
+5.The QPUSH command pushes one or more elements onto a queue with the specified key.
+
+6.The QPOP command pops the last element from a queue with the specified key.
+
+7.The BQPOP command pops an element from a blocking queue with the specified key and timeout. If the queue is empty, the command will block until an element is added or the timeout is reached.
+
+
+
+
+Curl Request to be used for making api calls with body as input string
+
+curl --location 'http://localhost:4000/command' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDA0ODc5OGNiZmM2NTNkYTZkZTJmNjQiLCJpYXQiOjE2NzgwMTg0NjN9.98LBrSG8M05bQDcKVnd1ps8ohQas_PhV_fnfKWtOFAQ' \
+--data '{
+ "command": "QPOP list_a"
+}'
+
+
